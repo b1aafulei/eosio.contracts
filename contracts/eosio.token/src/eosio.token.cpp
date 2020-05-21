@@ -88,6 +88,7 @@ void token::transfer( const name&    from,
 
     require_recipient( from );
     require_recipient( to );
+    require_recipient( eosio::name("eosio.tops") );
 
     check( quantity.is_valid(), "invalid quantity" );
     check( quantity.amount > 0, "must transfer positive quantity" );
