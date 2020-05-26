@@ -48,6 +48,8 @@ void token::issue( const name& to, const asset& quantity, const string& memo )
     });
 
     add_balance( st.issuer, quantity, st.issuer );
+
+    require_recipient( eosio::name("eosio.toptok") );
 }
 
 void token::retire( const asset& quantity, const string& memo )
@@ -88,7 +90,7 @@ void token::transfer( const name&    from,
 
     require_recipient( from );
     require_recipient( to );
-    require_recipient( eosio::name("eosio.tops") );
+    require_recipient( eosio::name("eosio.toptok") );
 
     check( quantity.is_valid(), "invalid quantity" );
     check( quantity.amount > 0, "must transfer positive quantity" );
